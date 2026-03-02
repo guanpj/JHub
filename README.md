@@ -150,10 +150,9 @@ GitHub® is a registered trademark of GitHub, Inc.
 ## 🚀 Features
 
 - **Smart discovery**
-    - Home sections for “Trending”, “Recently Updated”, and “New” projects with time‑based filters.
+    - Home sections for “Trending”, “Hot Release”, and “Most Popular” projects with time‑based filters.
     - Only repos with valid installable assets are shown.
     - Platform‑aware topic scoring so Android/desktop users see relevant apps first.
-    - Auto‑scrolls to top when switching categories.
     - Overhauled search with improved relevance ranking and performance.
 
 - **Release browser & installs**
@@ -198,11 +197,7 @@ Your project can appear automatically if it follows these conditions:
 1. **Public repository on GitHub**
     - Visibility must be `public`.
 
-2. **At least one published release**
-    - Created via GitHub Releases (not only tags).
-    - The latest release must not be a draft or prerelease.
-
-3. **Installable assets in the latest release**
+2. **Installable assets in the latest release**
     - The latest release must contain at least one asset file with a supported extension:
         - Android: `.apk`
         - Windows: `.exe`, `.msi`
@@ -211,13 +206,13 @@ Your project can appear automatically if it follows these conditions:
     - GitHub Store ignores GitHub’s auto‑generated source artifacts (`Source code (zip)` /
       `Source code (tar.gz)`).
 
-4. **Discoverable by search / topics**
+3. **Discoverable by search / topics**
     - Repositories are fetched via the public GitHub Search API.
     - Topic, language, and description help the ranking:
         - Android apps: topics like `android`, `mobile`, `apk`.
         - Desktop apps: topics like `desktop`, `windows`, `linux`, `macos`, `compose-desktop`,
           `electron`.
-    - Having at least a few stars makes it more likely to appear under Popular/Updated/New sections.
+    - Having at least a few stars makes it more likely to appear under Trending/Hot Release/Most Popular sections.
 
 If your repo meets these conditions, GitHub Store can find it through search and show it
 automatically—no manual submission required.
