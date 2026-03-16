@@ -207,6 +207,8 @@
     <string name="signing_key_changed_title">Signing key changed</string>
     <string name="signing_key_changed_message">The signing certificate for this app has changed since it was first installed.\n\nThis could mean the developer rotated their signing key, or the binary may have been tampered with.\n\nExpected: %1$s\nReceived: %2$s</string>
     <string name="install_anyway">Install anyway</string>
+    <string name="verified_build">Verified build</string>
+    <string name="checking_attestation">Checking\u2026</string>
     <string name="install_version">Install %1$s</string>
     <string name="failed_to_open_app">Failed to open %1$s</string>
     <string name="failed_to_uninstall">Failed to uninstall %1$s</string>

@@ -20,6 +20,7 @@ import zed.rainxch.core.data.dto.ReleaseNetwork
 import zed.rainxch.core.data.dto.RepoByIdNetwork
 import zed.rainxch.core.data.dto.RepoInfoNetwork
 import zed.rainxch.core.data.dto.UserProfileNetwork
+import zed.rainxch.details.data.dto.AttestationsResponse
 import zed.rainxch.core.data.mappers.toDomain
 import zed.rainxch.core.data.network.executeRequest
 import zed.rainxch.core.data.services.LocalizationManager
@@ -489,4 +490,24 @@ class DetailsRepositoryImpl(
             throw e
         }
     }
+
+    override suspend fun checkAttestations(
+        owner: String,
+        repo: String,
+        sha256Digest: String,
+    ): Boolean =
+        try {
+            val response =
+                httpClient
+                    .executeRequest<AttestationsResponse> {
+                        get("/repos/$owner/$repo/attestations/sha256:$sha256Digest") {
+                            header(HttpHeaders.Accept, "application/vnd.github+json")
+                        }
+                    }.getOrNull()
+            response != null && response.attestations.isNotEmpty()
+        } catch (e: Exception) {
+            logger.debug("Attestation check failed for $owner/$repo: ${e.message}")
+            false
+        }
+
 }

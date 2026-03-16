@@ -13,6 +13,7 @@ import zed.rainxch.details.presentation.model.SigningKeyWarning
 import zed.rainxch.details.presentation.model.DownloadStage
 import zed.rainxch.details.presentation.model.InstallLogItem
 import zed.rainxch.details.presentation.model.TranslationState
+import zed.rainxch.details.presentation.model.AttestationStatus
 import zed.rainxch.details.presentation.model.TranslationTarget
 
 data class DetailsState(
@@ -64,6 +65,7 @@ data class DetailsState(
     val showExternalInstallerPrompt: Boolean = false,
     val pendingInstallFilePath: String? = null,
     val showUninstallConfirmation: Boolean = false,
+    val attestationStatus: AttestationStatus = AttestationStatus.UNCHECKED,
 ) {
     val filteredReleases: List<GithubRelease>
         get() =

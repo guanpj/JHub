@@ -42,6 +42,7 @@ import zed.rainxch.core.domain.utils.ShareManager
 import zed.rainxch.details.domain.model.ReleaseCategory
 import zed.rainxch.details.domain.repository.DetailsRepository
 import zed.rainxch.details.domain.repository.TranslationRepository
+import zed.rainxch.details.presentation.model.AttestationStatus
 import zed.rainxch.details.presentation.model.DowngradeWarning
 import zed.rainxch.details.presentation.model.DownloadStage
 import zed.rainxch.details.presentation.model.InstallLogItem
@@ -61,6 +62,8 @@ import zed.rainxch.githubstore.core.presentation.res.rate_limit_exceeded
 import zed.rainxch.githubstore.core.presentation.res.removed_from_favourites
 import zed.rainxch.githubstore.core.presentation.res.translation_failed
 import java.io.File
+import java.io.FileInputStream
+import java.security.MessageDigest
 import java.util.concurrent.atomic.AtomicBoolean
 import kotlin.coroutines.cancellation.CancellationException
 import kotlin.time.Clock.System
@@ -1151,6 +1154,9 @@ class DetailsViewModel(
 
         installer.install(filePath, ext)
 
+        // Launch attestation check asynchronously (non-blocking)
+        launchAttestationCheck(filePath)
+
         if (platform == Platform.ANDROID) {
             saveInstalledAppToDatabase(
                 assetName = assetName,
@@ -1201,6 +1207,42 @@ class DetailsViewModel(
         }
     }
 
+    private fun launchAttestationCheck(filePath: String) {
+        val repo = _state.value.repository ?: return
+        val owner = repo.owner.login
+        val repoName = repo.name
+
+        _state.update { it.copy(attestationStatus = AttestationStatus.CHECKING) }
+
+        viewModelScope.launch {
+            try {
+                val digest = computeSha256(filePath)
+                val verified = detailsRepository.checkAttestations(owner, repoName, digest)
+                _state.update {
+                    it.copy(
+                        attestationStatus =
+                            if (verified) AttestationStatus.VERIFIED else AttestationStatus.UNVERIFIED,
+                    )
+                }
+            } catch (e: Exception) {
+                logger.debug("Attestation check error: ${e.message}")
+                _state.update { it.copy(attestationStatus = AttestationStatus.UNVERIFIED) }
+            }
+        }
+    }
+
+    private fun computeSha256(filePath: String): String {
+        val digest = MessageDigest.getInstance("SHA-256")
+        val buffer = ByteArray(8192)
+        FileInputStream(File(filePath)).use { fis ->
+            var bytesRead: Int
+            while (fis.read(buffer).also { bytesRead = it } != -1) {
+                digest.update(buffer, 0, bytesRead)
+            }
+        }
+        return digest.digest().joinToString("") { "%02x".format(it) }
+    }
+
     private suspend fun downloadAsset(
         assetName: String,
         sizeBytes: Long,
@@ -1226,6 +1268,7 @@ class DetailsViewModel(
                 downloadError = null,
                 installError = null,
                 downloadProgressPercent = null,
+                attestationStatus = AttestationStatus.UNCHECKED,
             )
 
         val existingPath = downloader.getDownloadedFilePath(assetName)
