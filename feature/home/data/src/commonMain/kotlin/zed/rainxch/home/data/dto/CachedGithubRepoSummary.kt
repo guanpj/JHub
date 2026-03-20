@@ -1,6 +1,7 @@
 package zed.rainxch.home.data.dto
 
 import kotlinx.serialization.Serializable
+import zed.rainxch.core.domain.model.DiscoveryPlatform
 
 @Serializable
 data class CachedGithubRepoSummary(
@@ -20,4 +21,5 @@ data class CachedGithubRepoSummary(
     val latestReleaseDate: String? = null,
     val trendingScore: Double? = null,
     val popularityScore: Int? = null,
+    val availablePlatforms: List<DiscoveryPlatform> = emptyList(),
 )

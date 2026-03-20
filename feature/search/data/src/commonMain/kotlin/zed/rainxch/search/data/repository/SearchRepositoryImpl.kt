@@ -267,11 +267,13 @@ class SearchRepositoryImpl(
 
     private fun detectAvailablePlatforms(assetNames: List<String>): List<DiscoveryPlatform> =
         buildList {
-            DiscoveryPlatform.entries.forEach { platform ->
-                if (assetNames.any { assetMatchesPlatform(it, platform) }) {
-                    add(platform)
+            DiscoveryPlatform.entries
+                .filter { it != DiscoveryPlatform.All }
+                .forEach { platform ->
+                    if (assetNames.any { assetMatchesPlatform(it, platform) }) {
+                        add(platform)
+                    }
                 }
-            }
         }
 
     private suspend fun checkRepoHasInstallers(
