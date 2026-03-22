@@ -141,3 +141,4 @@ modules:
         dest-filename: gradle-bin.zip
       # Pre-downloaded Gradle/Maven dependencies for offline build
       - flatpak-sources.json
+      - flatpak-sources-convention.json
