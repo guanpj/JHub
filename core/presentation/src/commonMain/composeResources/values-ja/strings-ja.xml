@@ -405,6 +405,7 @@
     <string name="auth_hint_denied">認証リクエストを拒否しました。意図しない場合は再試行してください。</string>
     <string name="auth_check_status">すでに認証しました</string>
     <string name="auth_polling_status">確認中…</string>
+    <string name="auth_rate_limited">レート制限に達しました — %1$d秒後に再試行</string>
 
     <!-- Read More / Show Less -->
     <string name="read_more">もっと読む</string>
@@ -555,6 +556,9 @@
     <string name="update_signing_key_mismatch">署名キーの不一致: 更新は別の開発者によって署名されています。更新がブロックされました。</string>
     <string name="liquid_glass_option_title">リキッドグラスエフェクト</string>
     <string name="liquid_glass_option_description">滑らかなガラスのような外観でインターフェースを向上させます</string>
+
+    <string name="scrollbar_option_title">スクロールバー</string>
+    <string name="scrollbar_option_description">スクロール可能なリストでスクロールバーを表示（デスクトップ）</string>
 
     <string name="hide_seen_title">閲覧済みリポジトリを非表示</string>
     <string name="hide_seen_description">すでに閲覧したリポジトリをディスカバリーフィードから非表示にします</string>

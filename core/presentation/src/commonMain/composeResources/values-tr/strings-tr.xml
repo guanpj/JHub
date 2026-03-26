@@ -437,6 +437,7 @@
     <string name="auth_hint_denied">Yetkilendirme isteğini reddettiniz. İstemeden yaptıysanız tekrar deneyin.</string>
     <string name="auth_check_status">Zaten yetkilendirdim</string>
     <string name="auth_polling_status">Kontrol ediliyor…</string>
+    <string name="auth_rate_limited">İstek sınırına ulaşıldı — %1$d sn sonra tekrar denenecek</string>
 
     <!-- Read More / Show Less -->
     <string name="read_more">Devamını oku</string>
@@ -590,6 +591,9 @@
     <string name="update_signing_key_mismatch">İmza anahtarı uyumsuzluğu: güncelleme farklı bir geliştirici tarafından imzalanmış. Güncelleme engellendi.</string>
     <string name="liquid_glass_option_title">Sıvı Cam Efekti</string>
     <string name="liquid_glass_option_description">Arayüzü pürüzsüz cam benzeri bir görünümle geliştirin</string>
+
+    <string name="scrollbar_option_title">Kaydırma çubuğu</string>
+    <string name="scrollbar_option_description">Kaydırılabilir listelerde kaydırma çubuğunu göster (masaüstü)</string>
 
     <string name="hide_seen_title">Görülen depoları gizle</string>
     <string name="hide_seen_description">Zaten görüntülediğiniz depoları keşif akışlarından gizleyin</string>

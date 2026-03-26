@@ -405,6 +405,7 @@
     <string name="auth_hint_denied">Vous avez refusé la demande d\'autorisation. Réessayez si c\'était involontaire.</string>
     <string name="auth_check_status">J’ai déjà autorisé</string>
     <string name="auth_polling_status">Vérification…</string>
+    <string name="auth_rate_limited">Limite atteinte — nouvelle tentative dans %1$d s</string>
 
     <!-- Read More / Show Less -->
     <string name="read_more">Lire la suite</string>
@@ -554,6 +555,9 @@
     <string name="update_signing_key_mismatch">Incompatibilité de clé de signature : la mise à jour a été signée par un développeur différent. Mise à jour bloquée.</string>
     <string name="liquid_glass_option_title">Effet verre liquide</string>
     <string name="liquid_glass_option_description">Améliorez l\'interface avec une apparence vitreuse et fluide</string>
+
+    <string name="scrollbar_option_title">Barre de défilement</string>
+    <string name="scrollbar_option_description">Afficher la barre de défilement dans les listes défilantes (bureau)</string>
 
     <string name="hide_seen_title">Masquer les dépôts consultés</string>
     <string name="hide_seen_description">Masquer les dépôts que vous avez déjà consultés des flux de découverte</string>

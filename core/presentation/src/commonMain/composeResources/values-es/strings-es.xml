@@ -405,6 +405,7 @@
     <string name="auth_hint_denied">Rechazaste la solicitud de autorización. Intenta de nuevo si fue involuntario.</string>
     <string name="auth_check_status">Ya he autorizado</string>
     <string name="auth_polling_status">Comprobando…</string>
+    <string name="auth_rate_limited">Límite alcanzado — reintentando en %1$d s</string>
 
     <!-- Read More / Show Less -->
     <string name="read_more">Leer más</string>
@@ -553,6 +554,9 @@
     <string name="update_signing_key_mismatch">Clave de firma no coincide: la actualización fue firmada por un desarrollador diferente. Actualización bloqueada.</string>
     <string name="liquid_glass_option_title">Efecto de cristal líquido</string>
     <string name="liquid_glass_option_description">Mejora la interfaz con una apariencia suave tipo cristal</string>
+
+    <string name="scrollbar_option_title">Barra de desplazamiento</string>
+    <string name="scrollbar_option_description">Mostrar barra de desplazamiento en listas desplazables (escritorio)</string>
 
     <string name="hide_seen_title">Ocultar repositorios vistos</string>
     <string name="hide_seen_description">Ocultar repositorios que ya has visto de las fuentes de descubrimiento</string>

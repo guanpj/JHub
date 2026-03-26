@@ -439,6 +439,7 @@
     <string name="auth_hint_denied">आपने प्राधिकरण अनुरोध अस्वीकार कर दिया। यदि यह अनजाने में हुआ तो पुनः प्रयास करें।</string>
     <string name="auth_check_status">मैं पहले ही अनुमति दे चुका हूँ</string>
     <string name="auth_polling_status">जाँच की जा रही है…</string>
+    <string name="auth_rate_limited">दर सीमा पार — %1$d सेकंड में पुनः प्रयास</string>
 
     <!-- Read More / Show Less -->
     <string name="read_more">और पढ़ें</string>
@@ -591,6 +592,9 @@
     <string name="update_signing_key_mismatch">साइनिंग कुंजी मेल नहीं खाती: अपडेट किसी अन्य डेवलपर द्वारा साइन किया गया था। अपडेट ब्लॉक किया गया।</string>
     <string name="liquid_glass_option_title">लिक्विड ग्लास इफ़ेक्ट</string>
     <string name="liquid_glass_option_description">एक चिकने काँच जैसे रूप से इंटरफ़ेस को बेहतर बनाएं</string>
+
+    <string name="scrollbar_option_title">स्क्रॉलबार</string>
+    <string name="scrollbar_option_description">स्क्रॉल करने योग्य सूचियों में स्क्रॉलबार दिखाएँ (डेस्कटॉप)</string>
 
     <string name="hide_seen_title">देखे गए रिपॉजिटरी छुपाएँ</string>
     <string name="hide_seen_description">पहले से देखे गए रिपॉजिटरी को डिस्कवरी फ़ीड से छुपाएँ</string>
