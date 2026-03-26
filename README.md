@@ -178,6 +178,7 @@ GitHub® is a registered trademark of GitHub, Inc.
 
 - **App management**
     - Open, uninstall, and downgrade installed apps directly from GitHub Store.
+    - **Link apps** — connect any app already installed on your device to its GitHub repository so GitHub Store can track updates for it. A guided flow lets you pick the app, enter the repo URL, and select the matching release asset.
     - Android: APK architecture matching (armv7/armv8), package monitoring, and update tracking.
     - Android: Shizuku silent installation — install and update apps without prompts (requires [Shizuku](https://shizuku.rikka.app/) running with ADB or root).
     - Android: Background update checking — configurable periodic checks (3h / 6h / 12h / 24h) with notifications when updates are found.
