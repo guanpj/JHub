@@ -151,9 +151,12 @@ class AppsRepositoryImpl(
     override suspend fun linkAppToRepo(
         deviceApp: DeviceApp,
         repoInfo: GithubRepoInfo,
+        assetFilterRegex: String?,
+        fallbackToOlderReleases: Boolean,
     ) {
         val now = Clock.System.now().toEpochMilliseconds()
         val globalPreRelease = tweaksRepository.getIncludePreReleases().first()
+        val normalizedFilter = assetFilterRegex?.trim()?.takeIf { it.isNotEmpty() }
 
         val installedApp =
             InstalledApp(
@@ -187,6 +190,8 @@ class AppsRepositoryImpl(
                 installedVersionCode = deviceApp.versionCode,
                 signingFingerprint = deviceApp.signingFingerprint,
                 includePreReleases = globalPreRelease,
+                assetFilterRegex = normalizedFilter,
+                fallbackToOlderReleases = fallbackToOlderReleases,
             )
 
         appsRepository.saveInstalledApp(installedApp)

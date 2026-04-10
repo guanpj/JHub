@@ -74,6 +74,20 @@ interface InstalledAppDao {
     @Query("UPDATE installed_apps SET includePreReleases = :enabled WHERE packageName = :packageName")
     suspend fun updateIncludePreReleases(packageName: String, enabled: Boolean)
 
+    @Query(
+        """
+        UPDATE installed_apps
+           SET assetFilterRegex = :regex,
+               fallbackToOlderReleases = :fallback
+         WHERE packageName = :packageName
+        """,
+    )
+    suspend fun updateAssetFilter(
+        packageName: String,
+        regex: String?,
+        fallback: Boolean,
+    )
+
     @Query("UPDATE installed_apps SET lastCheckedAt = :timestamp WHERE packageName = :packageName")
     suspend fun updateLastChecked(
         packageName: String,
