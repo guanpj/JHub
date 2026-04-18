@@ -1,7 +1,8 @@
 package zed.rainxch.core.data.local.db.migrations
 
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
+import androidx.room3.migration.Migration
+import androidx.sqlite.SQLiteConnection
+import androidx.sqlite.executeSQL
 
 /**
  * Adds the multi-layer variant fingerprint columns to `installed_apps`:
@@ -22,10 +23,10 @@ import androidx.sqlite.db.SupportSQLiteDatabase
  */
 val MIGRATION_11_12 =
     object : Migration(11, 12) {
-        override fun migrate(db: SupportSQLiteDatabase) {
-            db.execSQL("ALTER TABLE installed_apps ADD COLUMN preferredAssetTokens TEXT")
-            db.execSQL("ALTER TABLE installed_apps ADD COLUMN assetGlobPattern TEXT")
-            db.execSQL("ALTER TABLE installed_apps ADD COLUMN pickedAssetIndex INTEGER")
-            db.execSQL("ALTER TABLE installed_apps ADD COLUMN pickedAssetSiblingCount INTEGER")
+        override suspend fun migrate(connection: SQLiteConnection) {
+            connection.executeSQL("ALTER TABLE installed_apps ADD COLUMN preferredAssetTokens TEXT")
+            connection.executeSQL("ALTER TABLE installed_apps ADD COLUMN assetGlobPattern TEXT")
+            connection.executeSQL("ALTER TABLE installed_apps ADD COLUMN pickedAssetIndex INTEGER")
+            connection.executeSQL("ALTER TABLE installed_apps ADD COLUMN pickedAssetSiblingCount INTEGER")
         }
     }

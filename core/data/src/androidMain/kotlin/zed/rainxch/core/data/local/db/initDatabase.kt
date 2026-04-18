@@ -1,7 +1,8 @@
 package zed.rainxch.core.data.local.db
 
 import android.content.Context
-import androidx.room.Room
+import androidx.room3.Room
+import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import kotlinx.coroutines.Dispatchers
 import zed.rainxch.core.data.local.db.migrations.MIGRATION_1_2
 import zed.rainxch.core.data.local.db.migrations.MIGRATION_2_3
@@ -24,7 +25,8 @@ fun initDatabase(context: Context): AppDatabase {
         .databaseBuilder<AppDatabase>(
             context = appContext,
             name = dbFile.absolutePath,
-        ).setQueryCoroutineContext(Dispatchers.IO)
+        ).setDriver(BundledSQLiteDriver())
+        .setQueryCoroutineContext(Dispatchers.IO)
         .addMigrations(
             MIGRATION_1_2,
             MIGRATION_2_3,

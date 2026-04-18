@@ -1,7 +1,8 @@
 package zed.rainxch.core.data.local.db.migrations
 
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
+import androidx.room3.migration.Migration
+import androidx.sqlite.SQLiteConnection
+import androidx.sqlite.executeSQL
 
 /**
  * Adds per-app preferred-variant tracking to the installed_apps table:
@@ -17,9 +18,9 @@ import androidx.sqlite.db.SupportSQLiteDatabase
  */
 val MIGRATION_10_11 =
     object : Migration(10, 11) {
-        override fun migrate(db: SupportSQLiteDatabase) {
-            db.execSQL("ALTER TABLE installed_apps ADD COLUMN preferredAssetVariant TEXT")
-            db.execSQL(
+        override suspend fun migrate(connection: SQLiteConnection) {
+            connection.executeSQL("ALTER TABLE installed_apps ADD COLUMN preferredAssetVariant TEXT")
+            connection.executeSQL(
                 "ALTER TABLE installed_apps ADD COLUMN preferredVariantStale INTEGER NOT NULL DEFAULT 0",
             )
         }

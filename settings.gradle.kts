@@ -1,4 +1,4 @@
-rootProject.name = "GithubStore"
+rootProject.name = "JHub"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {

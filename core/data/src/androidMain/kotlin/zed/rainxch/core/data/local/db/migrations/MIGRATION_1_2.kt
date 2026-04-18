@@ -1,14 +1,15 @@
 package zed.rainxch.core.data.local.db.migrations
 
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
+import androidx.room3.migration.Migration
+import androidx.sqlite.SQLiteConnection
+import androidx.sqlite.executeSQL
 
 val MIGRATION_1_2 =
     object : Migration(1, 2) {
-        override fun migrate(db: SupportSQLiteDatabase) {
-            db.execSQL("ALTER TABLE installed_apps ADD COLUMN installedVersionName TEXT")
-            db.execSQL("ALTER TABLE installed_apps ADD COLUMN installedVersionCode INTEGER NOT NULL DEFAULT 0")
-            db.execSQL("ALTER TABLE installed_apps ADD COLUMN latestVersionName TEXT")
-            db.execSQL("ALTER TABLE installed_apps ADD COLUMN latestVersionCode INTEGER")
+        override suspend fun migrate(connection: SQLiteConnection) {
+            connection.executeSQL("ALTER TABLE installed_apps ADD COLUMN installedVersionName TEXT")
+            connection.executeSQL("ALTER TABLE installed_apps ADD COLUMN installedVersionCode INTEGER NOT NULL DEFAULT 0")
+            connection.executeSQL("ALTER TABLE installed_apps ADD COLUMN latestVersionName TEXT")
+            connection.executeSQL("ALTER TABLE installed_apps ADD COLUMN latestVersionCode INTEGER")
         }
     }

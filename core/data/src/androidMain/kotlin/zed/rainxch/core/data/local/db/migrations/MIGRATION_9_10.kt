@@ -1,7 +1,8 @@
 package zed.rainxch.core.data.local.db.migrations
 
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
+import androidx.room3.migration.Migration
+import androidx.sqlite.SQLiteConnection
+import androidx.sqlite.executeSQL
 
 /**
  * Adds per-app monorepo tracking fields to the installed_apps table:
@@ -13,9 +14,9 @@ import androidx.sqlite.db.SupportSQLiteDatabase
  */
 val MIGRATION_9_10 =
     object : Migration(9, 10) {
-        override fun migrate(db: SupportSQLiteDatabase) {
-            db.execSQL("ALTER TABLE installed_apps ADD COLUMN assetFilterRegex TEXT")
-            db.execSQL(
+        override suspend fun migrate(connection: SQLiteConnection) {
+            connection.executeSQL("ALTER TABLE installed_apps ADD COLUMN assetFilterRegex TEXT")
+            connection.executeSQL(
                 "ALTER TABLE installed_apps ADD COLUMN fallbackToOlderReleases INTEGER NOT NULL DEFAULT 0",
             )
         }

@@ -1,12 +1,13 @@
 package zed.rainxch.core.data.local.db.migrations
 
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
+import androidx.room3.migration.Migration
+import androidx.sqlite.SQLiteConnection
+import androidx.sqlite.executeSQL
 
 val MIGRATION_5_6 =
     object : Migration(5, 6) {
-        override fun migrate(db: SupportSQLiteDatabase) {
-            db.execSQL(
+        override suspend fun migrate(connection: SQLiteConnection) {
+            connection.executeSQL(
                 """
                 CREATE TABLE IF NOT EXISTS seen_repos (
                     repoId INTEGER NOT NULL PRIMARY KEY,

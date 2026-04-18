@@ -1,4 +1,4 @@
-import androidx.room.gradle.RoomExtension
+import androidx.room3.gradle.RoomExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -10,7 +10,7 @@ class RoomConventionPlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply("com.google.devtools.ksp")
-                apply("androidx.room")
+                apply("androidx.room3")
             }
 
             extensions.configure<RoomExtension> {
